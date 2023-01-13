@@ -1,0 +1,30 @@
+.single-product {
+  background-color: #e1d7c8;
+}
+
+.single-product img {
+  width: 20rem;
+  height: 25rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+.single-product label {
+  font-size: 1.8rem;
+  margin-right: 1rem;
+}
+
+.single-product div {
+  margin-bottom: 1rem;
+}
+
+.single-product__price {
+  margin-left: 1rem;
+  font-weight: 700;
+}
+
+.single-product h4 {
+  margin-top: 1rem;
+}

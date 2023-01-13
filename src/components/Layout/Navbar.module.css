@@ -1,0 +1,47 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #eef0eb;
+  z-index: 3;
+}
+
+.nav__wrapper {
+  max-width: 100rem;
+  padding: 1rem 1rem;
+  margin: auto;
+}
+
+.nav__wrapper--internal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav svg {
+  margin-right: 0.3rem;
+  background-color: #eef0eb;
+}
+
+.nav__amount {
+  position: absolute;
+  border-radius: 50%;
+  padding: 0 0.7rem;
+  border: 1px solid black;
+  background-color: #cbd8c9;
+  font-size: 1.8rem;
+  font-weight: 700;
+  top: -1rem;
+  right: 0.5rem;
+}
+
+.nav img {
+  max-width: 25rem;
+}
+
+@media (max-width: 500px) {
+  .nav img {
+    max-width: 16rem;
+  }
+}

@@ -1,0 +1,29 @@
+.all-products {
+  margin: auto;
+  max-width: 120rem;
+}
+
+.all-products__inner {
+  margin: 10rem 0;
+}
+
+.all-products__inner h2 {
+  text-align: center;
+}
+
+.all-products h2 {
+  margin-bottom: 2rem;
+}
+
+.all-products__carousel {
+  cursor: grab;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.inner-carousel {
+  width: 100%;
+  display: flex;
+  column-gap: 2rem;
+  margin: 0 1rem;
+}
