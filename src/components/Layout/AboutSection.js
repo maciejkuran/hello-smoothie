@@ -11,7 +11,7 @@ const AboutSection = () => {
         <h2>Our mission</h2>
         <div className={classes['about__grid']}>
           <Card className={classes['about__grid__item']}>
-            <h3>We spread healthy life style.</h3>
+            <h3>We spread healthy lifestyle.</h3>
             <BottomLine />
             <p>
               A healthy lifestyle can help you thrive as you move through your life's journey.
