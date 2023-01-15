@@ -6,14 +6,18 @@ import { faGlassWater } from '@fortawesome/free-solid-svg-icons';
 
 import PrimaryButton from '../UI/PrimaryButton';
 import BottomLine from '../UI/BottomLine';
+import { CartContext } from '../../store/CartContextProvider';
+import { useContext } from 'react';
 
 const Navbar = () => {
+  const { openCartHandler } = useContext(CartContext);
+
   return (
     <nav className={classes.nav}>
       <div className={classes['nav__wrapper']}>
         <div className={classes['nav__wrapper--internal']}>
           <img src={logo}></img>
-          <PrimaryButton properties={{ type: 'button' }}>
+          <PrimaryButton attributes={{ type: 'button', onClick: openCartHandler }}>
             <span>
               <FontAwesomeIcon icon={faGlassWater} />
             </span>

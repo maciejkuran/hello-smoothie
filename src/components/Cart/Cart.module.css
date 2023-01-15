@@ -29,13 +29,6 @@
   margin-top: 1rem;
 }
 
-.cart__button--close {
-  font-size: 2rem;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
 .cart__items {
   display: grid;
   grid-template-columns: repeat(1, 1fr);

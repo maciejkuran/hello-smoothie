@@ -1,8 +1,8 @@
 import { createPortal } from 'react-dom';
 import classes from './Overlay.module.css';
 
-const Overlay = () => {
-  const markup = <div className={classes.overlay}></div>;
+const Overlay = props => {
+  const markup = <div onClick={props.onClick} className={classes.overlay}></div>;
 
   return createPortal(markup, document.getElementById('modals'));
 };
