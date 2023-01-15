@@ -7,12 +7,15 @@ export const CartContext = createContext({
   isCheckout: '',
   activeOverlay: '',
   closeModalsHandler: '',
+  orderConfirmationHandler: '',
+  didOrder: '',
 });
 
 const CartContextProvider = props => {
   const [cartIsOpen, setCartIsOpen] = useState(false);
   const [isCheckout, setIsCheckout] = useState(false);
   const [activeOverlay, setActiveOverlay] = useState(false);
+  const [didOrder, setDidOrder] = useState(false);
 
   const openCartHandler = () => {
     setCartIsOpen(true);
@@ -25,10 +28,18 @@ const CartContextProvider = props => {
     setActiveOverlay(true);
   };
 
+  const orderConfirmationHandler = e => {
+    e.preventDefault();
+    setIsCheckout(false);
+    setDidOrder(true);
+    setActiveOverlay(true);
+  };
+
   const closeModalsHandler = () => {
     setCartIsOpen(false);
     setIsCheckout(false);
     setActiveOverlay(false);
+    setDidOrder(false);
   };
 
   return (
@@ -40,6 +51,8 @@ const CartContextProvider = props => {
         isCheckout: isCheckout,
         activeOverlay: activeOverlay,
         closeModalsHandler: closeModalsHandler,
+        orderConfirmationHandler: orderConfirmationHandler,
+        didOrder: didOrder,
       }}
     >
       {props.children}

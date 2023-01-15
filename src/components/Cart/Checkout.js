@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../store/CartContextProvider';
 
 const Checkout = () => {
-  const { closeModalsHandler } = useContext(CartContext);
+  const { closeModalsHandler, orderConfirmationHandler } = useContext(CartContext);
 
   return (
     <Card className={classes.checkout}>
@@ -47,7 +47,9 @@ const Checkout = () => {
         <p>*In case of problems/questions, we will contact you by phone</p>
         <div className={classes['checkout__form__completion']}>
           <p>Total: $10</p>
-          <PrimaryButton attributes={{ type: 'submit' }}>Submit order!</PrimaryButton>
+          <PrimaryButton attributes={{ type: 'submit', onClick: orderConfirmationHandler }}>
+            Submit order!
+          </PrimaryButton>
         </div>
       </form>
       <CloseButton attributes={{ onClick: closeModalsHandler }} />
