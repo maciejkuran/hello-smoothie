@@ -10,6 +10,8 @@ export const CartContext = createContext({
   orderConfirmationHandler: '',
   didOrder: '',
   addItem: '',
+  items: '',
+  total: '',
 });
 
 const cartReducer = (state, action) => {
@@ -81,6 +83,8 @@ const CartContextProvider = props => {
         orderConfirmationHandler,
         didOrder,
         addItem,
+        items: cartState.items,
+        total: cartState.total,
       }}
     >
       {props.children}

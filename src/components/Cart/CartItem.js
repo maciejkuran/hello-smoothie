@@ -2,18 +2,18 @@ import classes from './CartItem.module.css';
 import Card from '../UI/Card';
 import PrimaryButton from '../UI/PrimaryButton';
 
-const CartItem = () => {
+const CartItem = props => {
   return (
     <Card className={classes['cart-item']}>
       <div>
-        <h4>Kiwi boom!</h4>
-        <p>kiwi, spinach, parsley, something</p>
+        <h4>{props.name}</h4>
+        <p>{props.ingredients}</p>
       </div>
 
       <div className={classes['cart-item__internal']}>
         <div className={classes['cart-item__internal__labels']}>
-          <p>$5</p>
-          <p>x1</p>
+          <p>${props.price}</p>
+          <p>x{props.quantity}</p>
         </div>
         <div>
           <PrimaryButton className={classes['cart-item__internal__button']}>-</PrimaryButton>

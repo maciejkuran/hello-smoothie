@@ -18,24 +18,51 @@ const Cart = () => {
     activeOverlay,
     closeModalsHandler,
     didOrder,
+    items,
+    total,
   } = useContext(CartContext);
+
+  const itemsMarkup =
+    items.length === 0 ? (
+      <p>Your cart is empty.</p>
+    ) : (
+      items.map(item => (
+        <CartItem
+          id={item.id}
+          amount={item.amount}
+          img={item.img}
+          ingredients={item.ingredients}
+          name={item.name}
+          price={item.price}
+          quantity={item.quantity}
+          totalPerItem={item.total}
+        />
+      ))
+    );
+
+  const totalMarkup =
+    total === 0 || total === '' ? '' : <p className={classes['cart__total']}>Total: ${total}</p>;
+
+  const checkoutBtnMarkup =
+    total === 0 || total === '' ? (
+      ''
+    ) : (
+      <PrimaryButton
+        attributes={{ onClick: openCheckoutHandler }}
+        className={classes['cart__button--checkout']}
+      >
+        Checkout
+      </PrimaryButton>
+    );
 
   return (
     <Fragment>
       {cartIsOpen && (
         <Card className={classes.cart}>
           <h3>Your cart</h3>
-          <div className={classes['cart__items']}>
-            <CartItem />
-            <CartItem />
-          </div>
-          <p className={classes['cart__total']}>Total: $10</p>
-          <PrimaryButton
-            attributes={{ onClick: openCheckoutHandler }}
-            className={classes['cart__button--checkout']}
-          >
-            Checkout
-          </PrimaryButton>
+          <div className={classes['cart__items']}>{itemsMarkup}</div>
+          {totalMarkup}
+          {checkoutBtnMarkup}
 
           <CloseButton attributes={{ onClick: closeModalsHandler }} />
         </Card>
