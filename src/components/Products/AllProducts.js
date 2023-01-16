@@ -3,10 +3,23 @@ import SingleProduct from './SingleProduct';
 
 import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import useHttp from '../../hooks/useHttp';
 
 const AllProducts = () => {
   const [leftConstraint, setLeftConstraint] = useState(0);
   const allProductsCarouselRef = useRef();
+
+  const { fetchData, data, isError, isLoading } = useHttp();
+
+  useEffect(() => {
+    fetchData(
+      'https://hello-smoothie-7877e-default-rtdb.firebaseio.com/products.json',
+      'Problem with fetching data. Try again',
+      {}
+    );
+  }, []);
+
+  console.log(data);
 
   useEffect(() => {
     const calcConstraint = () => {
