@@ -4,10 +4,33 @@ import BottomLine from '../UI/BottomLine';
 import PrimaryButton from '../UI/PrimaryButton';
 import Input from '../UI/Input';
 
-import { useId } from 'react';
+import { useId, useContext } from 'react';
+import useInput from '../../hooks/useInput';
+import { CartContext } from '../../store/CartContextProvider';
+
+const validateInput = value => +value >= 1 && value !== '';
 
 const SingleProduct = props => {
   const id = useId();
+  const { getValueHandler, inputBlurHandler, resetValueHandler, noError, value, isTouched } =
+    useInput(validateInput);
+  const { addItem } = useContext(CartContext);
+
+  const addItemToCartHandler = () => {
+    if (noError)
+      addItem({
+        id: props.id,
+        amount: props.amount,
+        img: props.img,
+        ingredients: props.ingredients,
+        name: props.name,
+        price: props.price,
+        quantity: +value,
+        total: +props.price * +value,
+      });
+
+    resetValueHandler();
+  };
 
   return (
     <div>
@@ -22,18 +45,26 @@ const SingleProduct = props => {
         <BottomLine />
         <form>
           <div>
-            <label htmlFor={id}>amount</label>
+            <label htmlFor={id}>quantity</label>
             <Input
               attributes={{
+                onBlur: inputBlurHandler,
+                onChange: getValueHandler,
                 id: id,
                 type: 'number',
                 min: '1',
                 max: '20',
                 placeholder: '0',
+                value: value,
               }}
             />
           </div>
-          <PrimaryButton attributes={{ type: 'button' }}>Add+</PrimaryButton>
+          {!noError && isTouched && (
+            <p className={classes['single-product__quantity-error']}>Please choose quantity.</p>
+          )}
+          <PrimaryButton attributes={{ type: 'button', onClick: addItemToCartHandler }}>
+            Add+
+          </PrimaryButton>
         </form>
       </Card>
     </div>

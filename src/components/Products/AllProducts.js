@@ -15,7 +15,7 @@ const AllProducts = () => {
   useEffect(() => {
     fetchData(
       'https://hello-smoothie-7877e-default-rtdb.firebaseio.com/products.json',
-      'Problem with fetching data. Try again',
+      'Problem with fetching data. Please try again.',
       {}
     );
   }, []);
@@ -50,6 +50,8 @@ const AllProducts = () => {
     <section className={classes['all-products']}>
       <div className={classes['all-products__inner']}>
         <h2>Choose for yourself</h2>
+        {isLoading && <p className={classes['all-products-feedback']}>Loading smoothies...</p>}
+        {isError && <p className={classes['all-products-feedback']}>{isError}</p>}
         <motion.div
           key={leftConstraint}
           whileTap={{ cursor: 'grabbing' }}
@@ -65,7 +67,7 @@ const AllProducts = () => {
               return (
                 <SingleProduct
                   key={smoothie.id}
-                  id={smoothie}
+                  id={smoothie.id}
                   name={smoothie.name}
                   amount={smoothie.amount}
                   img={smoothie.img}

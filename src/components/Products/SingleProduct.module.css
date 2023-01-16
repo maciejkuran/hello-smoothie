@@ -36,3 +36,8 @@
 .single-product h4 {
   margin-top: 1rem;
 }
+
+.single-product__quantity-error {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
