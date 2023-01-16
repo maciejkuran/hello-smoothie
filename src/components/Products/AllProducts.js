@@ -11,6 +11,7 @@ const AllProducts = () => {
 
   const { fetchData, data, isError, isLoading } = useHttp();
 
+  //Loading products from the firebase backend
   useEffect(() => {
     fetchData(
       'https://hello-smoothie-7877e-default-rtdb.firebaseio.com/products.json',
@@ -19,7 +20,17 @@ const AllProducts = () => {
     );
   }, []);
 
-  console.log(data);
+  const smoothies = [];
+  for (const key in data) {
+    smoothies.push({
+      id: key,
+      name: data[key].name,
+      img: data[key].img,
+      amount: data[key].amount,
+      ingredients: data[key].ingredients,
+      price: data[key].price,
+    });
+  }
 
   useEffect(() => {
     const calcConstraint = () => {
@@ -33,7 +44,7 @@ const AllProducts = () => {
     window.addEventListener('resize', calcConstraint);
 
     return () => window.removeEventListener('resize', calcConstraint);
-  }, []);
+  }, [data]);
 
   return (
     <section className={classes['all-products']}>
@@ -50,13 +61,19 @@ const AllProducts = () => {
             dragConstraints={{ right: 0, left: -leftConstraint - 10 }}
             className={classes['inner-carousel']}
           >
-            <SingleProduct />
-            <SingleProduct />
-            <SingleProduct />
-            <SingleProduct />
-            <SingleProduct />
-            <SingleProduct />
-            <SingleProduct />
+            {smoothies.map(smoothie => {
+              return (
+                <SingleProduct
+                  key={smoothie.id}
+                  id={smoothie}
+                  name={smoothie.name}
+                  amount={smoothie.amount}
+                  img={smoothie.img}
+                  ingredients={smoothie.ingredients}
+                  price={smoothie.price}
+                />
+              );
+            })}
           </motion.div>
         </motion.div>
       </div>

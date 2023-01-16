@@ -4,22 +4,20 @@ import BottomLine from '../UI/BottomLine';
 import PrimaryButton from '../UI/PrimaryButton';
 import Input from '../UI/Input';
 
-import img from '../../assets/img/kiwi_bomb.jpg';
-
 import { useId } from 'react';
 
-const SingleProduct = () => {
+const SingleProduct = props => {
   const id = useId();
 
   return (
     <div>
       <Card className={classes['single-product']}>
-        <img src={img}></img>
-        <h4>Kiwi boom!</h4>
-        <p>kiwi, spinach, parsley</p>
+        <img src={props.img}></img>
+        <h4>{props.name}</h4>
+        <p>{props.ingredients}</p>
         <p>
-          <span>0.3l</span>
-          <span className={classes['single-product__price']}>$6</span>
+          <span>{props.amount}l</span>
+          <span className={classes['single-product__price']}>${props.price}</span>
         </p>
         <BottomLine />
         <form>

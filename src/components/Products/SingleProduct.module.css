@@ -1,5 +1,6 @@
 .single-product {
   background-color: #e1d7c8;
+  height: 100%;
 }
 
 .single-product img {
@@ -18,6 +19,13 @@
 
 .single-product div {
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.single-product div input {
+  max-width: 8rem;
 }
 
 .single-product__price {
