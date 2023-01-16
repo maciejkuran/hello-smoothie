@@ -6,7 +6,11 @@ import PrimaryButton from '../UI/PrimaryButton';
 
 import img from '../../assets/img/hello_smoothie_main.png';
 
-const WelcomeSection = () => {
+const WelcomeSection = props => {
+  const smoothScrollToProductsHandler = e => {
+    props.productsContainer.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <header className={classes.header}>
       <Card className={classes['header__wrapper']}>
@@ -17,7 +21,9 @@ const WelcomeSection = () => {
             We are a local company based in Chicago. Handmade, selected fruits & veggies, original
             recipes. Delicious smoothies delivered in 1 hour.
           </p>
-          <PrimaryButton properties={{ type: 'button' }}>Order now!</PrimaryButton>
+          <PrimaryButton attributes={{ type: 'button', onClick: smoothScrollToProductsHandler }}>
+            Order now!
+          </PrimaryButton>
         </div>
         <img src={img}></img>
       </Card>

@@ -5,11 +5,15 @@ import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import useHttp from '../../hooks/useHttp';
 
-const AllProducts = () => {
+const AllProducts = props => {
   const [leftConstraint, setLeftConstraint] = useState(0);
   const allProductsCarouselRef = useRef();
-
+  const productsContainerRef = useRef();
   const { fetchData, data, isError, isLoading } = useHttp();
+
+  useEffect(() => {
+    props.productsContainer(productsContainerRef.current);
+  }, []);
 
   //Loading products from the firebase backend
   useEffect(() => {
@@ -47,7 +51,7 @@ const AllProducts = () => {
   }, [data]);
 
   return (
-    <section className={classes['all-products']}>
+    <section ref={productsContainerRef} className={classes['all-products']}>
       <div className={classes['all-products__inner']}>
         <h2>Choose for yourself</h2>
         {isLoading && <p className={classes['all-products-feedback']}>Loading smoothies...</p>}

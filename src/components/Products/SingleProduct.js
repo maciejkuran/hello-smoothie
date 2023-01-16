@@ -38,9 +38,9 @@ const SingleProduct = props => {
         <img src={props.img}></img>
         <h4>{props.name}</h4>
         <p>{props.ingredients}</p>
-        <p>
+        <p className={classes['single-product__text']}>
           <span>{props.amount}l</span>
-          <span className={classes['single-product__price']}>${props.price}</span>
+          <span className={classes['single-product__text--price']}>${props.price}</span>
         </p>
         <BottomLine />
         <form>
@@ -62,7 +62,14 @@ const SingleProduct = props => {
           {!noError && isTouched && (
             <p className={classes['single-product__quantity-error']}>Please choose quantity.</p>
           )}
-          <PrimaryButton attributes={{ type: 'button', onClick: addItemToCartHandler }}>
+          <PrimaryButton
+            className={classes['single-product__button--add-item']}
+            attributes={{
+              disabled: !noError,
+              type: 'button',
+              onClick: addItemToCartHandler,
+            }}
+          >
             Add+
           </PrimaryButton>
         </form>

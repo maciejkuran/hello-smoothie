@@ -1,5 +1,5 @@
 .single-product {
-  background-color: #e1d7c8;
+  background-color: #fff6ea;
   height: 100%;
 }
 
@@ -28,7 +28,11 @@
   max-width: 8rem;
 }
 
-.single-product__price {
+.single-product__text {
+  margin-top: 1rem;
+}
+
+.single-product__text--price {
   margin-left: 1rem;
   font-weight: 700;
 }
@@ -40,4 +44,15 @@
 .single-product__quantity-error {
   margin-bottom: 1rem;
   font-size: 1.4rem;
+}
+
+.single-product__button--add-item:disabled {
+  border: 1px solid rgb(164, 164, 164);
+  color: rgb(164, 164, 164);
+}
+
+.single-product__button--add-item:disabled {
+  border: 1px solid rgb(164, 164, 164);
+  color: rgb(164, 164, 164);
+  background: transparent;
 }

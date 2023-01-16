@@ -9,6 +9,7 @@ const useInput = validationLogic => {
 
   const getValueHandler = e => {
     setValue(e.target.value);
+    setIsTouched(true);
   };
 
   const inputBlurHandler = () => {
