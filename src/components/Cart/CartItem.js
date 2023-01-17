@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../store/CartContextProvider';
 
 const CartItem = props => {
-  const { removeItem } = useContext(CartContext);
+  const { removeItem, changeQuantity } = useContext(CartContext);
 
   return (
     <Card className={classes['cart-item']}>
@@ -21,8 +21,15 @@ const CartItem = props => {
           <p>x{props.quantity}</p>
         </div>
         <div>
-          <PrimaryButton className={classes['cart-item__internal__button']}>-</PrimaryButton>
-          <PrimaryButton>+</PrimaryButton>
+          <PrimaryButton
+            attributes={{ onClick: changeQuantity.bind(null, props.id, -1) }}
+            className={classes['cart-item__internal__button']}
+          >
+            -
+          </PrimaryButton>
+          <PrimaryButton attributes={{ onClick: changeQuantity.bind(null, props.id, 1) }}>
+            +
+          </PrimaryButton>
         </div>
       </div>
 
