@@ -24,7 +24,7 @@ const Cart = () => {
 
   const itemsMarkup =
     items.length === 0 ? (
-      <p>Your cart is empty.</p>
+      <p>Your cart is currently empty. We will be more than happy to make a smoothie for you!</p>
     ) : (
       items.map(item => (
         <CartItem

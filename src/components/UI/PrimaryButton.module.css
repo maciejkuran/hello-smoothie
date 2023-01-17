@@ -11,3 +11,14 @@
   transition: background-color 500ms;
   background-color: #e7ede6;
 }
+
+.button:disabled {
+  border: 1px solid rgb(164, 164, 164);
+  color: rgb(164, 164, 164);
+}
+
+.button:disabled {
+  border: 1px solid rgb(164, 164, 164);
+  color: rgb(164, 164, 164);
+  background: transparent;
+}
