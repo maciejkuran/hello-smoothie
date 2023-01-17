@@ -11,7 +11,8 @@ export const CartContext = createContext({
   didOrder: '',
   addItem: '',
   items: '',
-  total: '',
+  total: 0,
+  removeItem: '',
 });
 
 const cartReducer = (state, action) => {
@@ -32,6 +33,13 @@ const cartReducer = (state, action) => {
       return { total: state.total + action.item.total, items: [action.item, ...state.items] };
     }
   }
+
+  if (action.type === 'REMOVE') {
+    const toDeleteItemTotal = state.items.filter(item => item.id === action.id)[0].total;
+    const filteredItems = state.items.filter(item => item.id !== action.id);
+
+    return { total: state.total - toDeleteItemTotal, items: filteredItems };
+  }
 };
 
 const CartContextProvider = props => {
@@ -40,10 +48,14 @@ const CartContextProvider = props => {
   const [activeOverlay, setActiveOverlay] = useState(false);
   const [didOrder, setDidOrder] = useState(false);
 
-  const [cartState, dispatchCartState] = useReducer(cartReducer, { total: '', items: [] });
+  const [cartState, dispatchCartState] = useReducer(cartReducer, { total: 0, items: [] });
 
   const addItem = item => {
     dispatchCartState({ type: 'ADD', item: item, total: item.total });
+  };
+
+  const removeItem = id => {
+    dispatchCartState({ type: 'REMOVE', id: id });
   };
 
   const openCartHandler = () => {
@@ -85,6 +97,7 @@ const CartContextProvider = props => {
         addItem,
         items: cartState.items,
         total: cartState.total,
+        removeItem,
       }}
     >
       {props.children}

@@ -2,7 +2,12 @@ import classes from './CartItem.module.css';
 import Card from '../UI/Card';
 import PrimaryButton from '../UI/PrimaryButton';
 
+import { useContext } from 'react';
+import { CartContext } from '../../store/CartContextProvider';
+
 const CartItem = props => {
+  const { removeItem } = useContext(CartContext);
+
   return (
     <Card className={classes['cart-item']}>
       <div>
@@ -21,7 +26,10 @@ const CartItem = props => {
         </div>
       </div>
 
-      <PrimaryButton className={classes['cart-item__internal__button--remove']}>
+      <PrimaryButton
+        attributes={{ onClick: removeItem.bind(null, props.id) }}
+        className={classes['cart-item__internal__button--remove']}
+      >
         Remove :(
       </PrimaryButton>
     </Card>
