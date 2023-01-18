@@ -12,7 +12,10 @@ const useHttp = () => {
 
       if (!res.ok) throw new Error(errMsg);
 
+      if (res.status >= 400 || res === null) throw new Error(errMsg);
+
       const data = await res.json();
+
       setData(data);
     } catch (err) {
       setIsError(err.message);

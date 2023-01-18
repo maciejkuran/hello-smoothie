@@ -14,6 +14,7 @@ export const CartContext = createContext({
   total: 0,
   removeItem: '',
   changeQuantity: '',
+  resetCart: '',
 });
 
 const cartReducer = (state, action) => {
@@ -67,6 +68,10 @@ const cartReducer = (state, action) => {
       return { total: totalInCart, items: filteredItems };
     }
   }
+
+  if (action.type === 'RESET_CART') {
+    return { total: 0, items: [] };
+  }
 };
 
 const CartContextProvider = props => {
@@ -89,6 +94,10 @@ const CartContextProvider = props => {
     dispatchCartState({ type: 'CHANGE_QUANTITY', id: id, amount: amount });
   };
 
+  const resetCart = () => {
+    dispatchCartState({ type: 'RESET_CART' });
+  };
+
   const openCartHandler = () => {
     setCartIsOpen(true);
     setActiveOverlay(true);
@@ -102,7 +111,6 @@ const CartContextProvider = props => {
 
   const orderConfirmationHandler = e => {
     e.preventDefault();
-    setIsCheckout(false);
     setDidOrder(true);
     setActiveOverlay(true);
   };
@@ -130,6 +138,7 @@ const CartContextProvider = props => {
         total: cartState.total,
         removeItem,
         changeQuantity,
+        resetCart,
       }}
     >
       {props.children}

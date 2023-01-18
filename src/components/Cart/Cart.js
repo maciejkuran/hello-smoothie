@@ -5,7 +5,6 @@ import CartItem from '../Cart/CartItem';
 import Overlay from '../UI/Overlay';
 import CloseButton from '../UI/CloseButton';
 import Checkout from '../Cart/Checkout';
-import OrderConfirmation from './OrderConfirmation';
 
 import { Fragment, useContext } from 'react';
 import { CartContext } from '../../store/CartContextProvider';
@@ -17,9 +16,9 @@ const Cart = () => {
     isCheckout,
     activeOverlay,
     closeModalsHandler,
-    didOrder,
     items,
     total,
+    didOrder,
   } = useContext(CartContext);
 
   const itemsMarkup =
@@ -70,7 +69,6 @@ const Cart = () => {
       )}
       {activeOverlay && <Overlay onClick={closeModalsHandler} />}
       {isCheckout && <Checkout />}
-      {didOrder && <OrderConfirmation />}
     </Fragment>
   );
 };
