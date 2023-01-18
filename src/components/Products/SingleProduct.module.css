@@ -4,7 +4,7 @@
 }
 
 .single-product img {
-  width: 20rem;
+  width: 25rem;
   height: 25rem;
   object-fit: cover;
   object-position: center;
@@ -44,4 +44,11 @@
 .single-product__quantity-error {
   margin-bottom: 1rem;
   font-size: 1.4rem;
+}
+
+@media (max-width: 500px) {
+  .single-product img {
+    width: 20rem;
+    height: 15rem;
+  }
 }

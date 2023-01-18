@@ -14,7 +14,7 @@ import useHttp from '../../hooks/useHttp';
 const validateIfNotEmpty = value => value !== '';
 
 const Checkout = () => {
-  const { closeModalsHandler, orderConfirmationHandler, total, items, didOrder, resetCart } =
+  const { closeModalsHandler, orderConfirmationHandler, total, items, didOrder } =
     useContext(CartContext);
 
   const { fetchData: sendData, isError, isLoading } = useHttp();
