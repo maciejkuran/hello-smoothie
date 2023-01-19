@@ -4,9 +4,11 @@ import Card from '../UI/Card';
 
 import { useContext, useEffect } from 'react';
 import { CartContext } from '../../store/CartContextProvider';
+import { ViewContext } from '../../store/ViewContextProvider';
 
 const OrderConfirmation = props => {
-  const { closeModalsHandler, didOrder, resetCart } = useContext(CartContext);
+  const { resetCart } = useContext(CartContext);
+  const { closeModalsHandler, didOrder } = useContext(ViewContext);
 
   useEffect(() => {
     if (!props.isError && didOrder) {

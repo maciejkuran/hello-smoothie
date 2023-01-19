@@ -6,19 +6,15 @@ import Overlay from '../UI/Overlay';
 import CloseButton from '../UI/CloseButton';
 import Checkout from '../Cart/Checkout';
 
-import { Fragment, useContext } from 'react';
+import { useContext } from 'react';
 import { CartContext } from '../../store/CartContextProvider';
+import { ViewContext } from '../../store/ViewContextProvider';
 
 const Cart = () => {
-  const {
-    cartIsOpen,
-    openCheckoutHandler,
-    isCheckout,
-    activeOverlay,
-    closeModalsHandler,
-    items,
-    total,
-  } = useContext(CartContext);
+  const { items, total } = useContext(CartContext);
+
+  const { cartIsOpen, openCheckoutHandler, isCheckout, activeOverlay, closeModalsHandler } =
+    useContext(ViewContext);
 
   const itemsMarkup =
     items.length === 0 ? (
@@ -55,7 +51,7 @@ const Cart = () => {
     );
 
   return (
-    <Fragment>
+    <section>
       {cartIsOpen && (
         <Card className={classes.cart}>
           <h3>Your cart</h3>
@@ -68,7 +64,7 @@ const Cart = () => {
       )}
       {activeOverlay && <Overlay onClick={closeModalsHandler} />}
       {isCheckout && <Checkout />}
-    </Fragment>
+    </section>
   );
 };
 

@@ -8,14 +8,16 @@ import OrderConfirmation from '../../components/Cart/OrderConfirmation';
 
 import { useContext } from 'react';
 import { CartContext } from '../../store/CartContextProvider';
+import { ViewContext } from '../../store/ViewContextProvider';
 import useInput from '../../hooks/useInput';
 import useHttp from '../../hooks/useHttp';
 
 const validateIfNotEmpty = value => value !== '';
 
 const Checkout = () => {
-  const { closeModalsHandler, orderConfirmationHandler, total, items, didOrder } =
-    useContext(CartContext);
+  const { total, items } = useContext(CartContext);
+
+  const { closeModalsHandler, orderConfirmationHandler, didOrder } = useContext(ViewContext);
 
   const { fetchData: sendData, isError, isLoading } = useHttp();
 

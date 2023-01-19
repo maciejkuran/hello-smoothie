@@ -1,14 +1,6 @@
-import { createContext, useState, useReducer, useMemo } from 'react';
+import { createContext, useReducer, useMemo } from 'react';
 
 export const CartContext = createContext({
-  openCartHandler: '',
-  cartIsOpen: '',
-  openCheckoutHandler: '',
-  isCheckout: '',
-  activeOverlay: '',
-  closeModalsHandler: '',
-  orderConfirmationHandler: '',
-  didOrder: '',
   addItem: '',
   items: '',
   total: 0,
@@ -75,11 +67,6 @@ const cartReducer = (state, action) => {
 };
 
 const CartContextProvider = props => {
-  const [cartIsOpen, setCartIsOpen] = useState(false);
-  const [isCheckout, setIsCheckout] = useState(false);
-  const [activeOverlay, setActiveOverlay] = useState(false);
-  const [didOrder, setDidOrder] = useState(false);
-
   const [cartState, dispatchCartState] = useReducer(cartReducer, { total: 0, items: [] });
 
   const cartStateItems = useMemo(() => cartState.items, [cartState]);
@@ -100,41 +87,9 @@ const CartContextProvider = props => {
     dispatchCartState({ type: 'RESET_CART' });
   };
 
-  const openCartHandler = () => {
-    setCartIsOpen(true);
-    setActiveOverlay(true);
-  };
-
-  const openCheckoutHandler = () => {
-    setIsCheckout(true);
-    setCartIsOpen(false);
-    setActiveOverlay(true);
-  };
-
-  const orderConfirmationHandler = e => {
-    e.preventDefault();
-    setDidOrder(true);
-    setActiveOverlay(true);
-  };
-
-  const closeModalsHandler = () => {
-    setCartIsOpen(false);
-    setIsCheckout(false);
-    setActiveOverlay(false);
-    setDidOrder(false);
-  };
-
   return (
     <CartContext.Provider
       value={{
-        openCartHandler,
-        cartIsOpen,
-        openCheckoutHandler,
-        isCheckout,
-        activeOverlay,
-        closeModalsHandler,
-        orderConfirmationHandler,
-        didOrder,
         addItem,
         items: cartStateItems,
         total: cartState.total,

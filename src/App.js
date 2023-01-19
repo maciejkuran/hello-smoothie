@@ -5,6 +5,7 @@ import AllProducts from './components/Products/AllProducts';
 import Footer from './components/Layout/Footer';
 import Cart from './components/Cart/Cart';
 import CartContextProvider from './store/CartContextProvider';
+import ViewContextProvider from './store/ViewContextProvider';
 import { useCallback, useState, useMemo } from 'react';
 
 function App() {
@@ -17,11 +18,13 @@ function App() {
 
   return (
     <CartContextProvider>
-      <Navbar />
+      <ViewContextProvider>
+        <Navbar />
+        <Cart />
+      </ViewContextProvider>
       <WelcomeSection productsContainer={containerNode} />
       <AboutSection />
       <AllProducts productsContainer={productsContainer} />
-      <Cart />
       <Footer />
     </CartContextProvider>
   );
