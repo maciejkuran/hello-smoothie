@@ -7,14 +7,19 @@ import { faGlassWater } from '@fortawesome/free-solid-svg-icons';
 import PrimaryButton from '../UI/PrimaryButton';
 import BottomLine from '../UI/BottomLine';
 import { CartContext } from '../../store/CartContextProvider';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useMemo } from 'react';
 
 const Navbar = () => {
   const { openCartHandler, items } = useContext(CartContext);
   const [bounceQuantity, setBounceQuantity] = useState(false);
 
-  const cartQuantity =
-    items.length >= 1 ? items.map(item => item.quantity).reduce((acc, val) => acc + val) : 0;
+  const cartQuantity = useMemo(() => {
+    if (items.length >= 1) {
+      return items.map(item => item.quantity).reduce((acc, val) => acc + val);
+    } else {
+      return 0;
+    }
+  }, [items]);
 
   useEffect(() => {
     if (cartQuantity === 0) return;

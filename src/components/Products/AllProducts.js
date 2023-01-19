@@ -2,7 +2,7 @@ import classes from './AllProducts.module.css';
 import SingleProduct from './SingleProduct';
 
 import { motion } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import useHttp from '../../hooks/useHttp';
 
 const AllProducts = props => {

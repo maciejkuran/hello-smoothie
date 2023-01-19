@@ -18,7 +18,6 @@ const Cart = () => {
     closeModalsHandler,
     items,
     total,
-    didOrder,
   } = useContext(CartContext);
 
   const itemsMarkup =

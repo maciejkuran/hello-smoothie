@@ -4,7 +4,7 @@ import BottomLine from '../UI/BottomLine';
 import PrimaryButton from '../UI/PrimaryButton';
 import Input from '../UI/Input';
 
-import { useId, useContext } from 'react';
+import React, { useId, useContext } from 'react';
 import useInput from '../../hooks/useInput';
 import { CartContext } from '../../store/CartContextProvider';
 
@@ -78,4 +78,4 @@ const SingleProduct = props => {
   );
 };
 
-export default SingleProduct;
+export default React.memo(SingleProduct);

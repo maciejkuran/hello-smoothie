@@ -2,7 +2,7 @@ import classes from './CartItem.module.css';
 import Card from '../UI/Card';
 import PrimaryButton from '../UI/PrimaryButton';
 
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { CartContext } from '../../store/CartContextProvider';
 
 const CartItem = props => {
@@ -43,4 +43,4 @@ const CartItem = props => {
   );
 };
 
-export default CartItem;
+export default React.memo(CartItem);

@@ -5,11 +5,12 @@ import AllProducts from './components/Products/AllProducts';
 import Footer from './components/Layout/Footer';
 import Cart from './components/Cart/Cart';
 import CartContextProvider from './store/CartContextProvider';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useMemo } from 'react';
 
 function App() {
   const [container, setContainer] = useState('');
 
+  const containerNode = useMemo(() => container, [container]);
   const productsContainer = useCallback(container => {
     setContainer(container);
   }, []);
@@ -17,7 +18,7 @@ function App() {
   return (
     <CartContextProvider>
       <Navbar />
-      <WelcomeSection productsContainer={container} />
+      <WelcomeSection productsContainer={containerNode} />
       <AboutSection />
       <AllProducts productsContainer={productsContainer} />
       <Cart />

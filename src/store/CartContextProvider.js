@@ -1,4 +1,4 @@
-import { createContext, useState, useReducer } from 'react';
+import { createContext, useState, useReducer, useMemo } from 'react';
 
 export const CartContext = createContext({
   openCartHandler: '',
@@ -82,6 +82,8 @@ const CartContextProvider = props => {
 
   const [cartState, dispatchCartState] = useReducer(cartReducer, { total: 0, items: [] });
 
+  const cartStateItems = useMemo(() => cartState.items, [cartState]);
+
   const addItem = item => {
     dispatchCartState({ type: 'ADD', item: item, total: item.total });
   };
@@ -134,7 +136,7 @@ const CartContextProvider = props => {
         orderConfirmationHandler,
         didOrder,
         addItem,
-        items: cartState.items,
+        items: cartStateItems,
         total: cartState.total,
         removeItem,
         changeQuantity,

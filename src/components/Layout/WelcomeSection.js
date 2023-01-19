@@ -3,8 +3,8 @@ import classes from './WelcomeSection.module.css';
 import Card from '../UI/Card';
 import BottomLine from '../UI/BottomLine';
 import PrimaryButton from '../UI/PrimaryButton';
-
 import img from '../../assets/img/hello_smoothie_main.png';
+import React from 'react';
 
 const WelcomeSection = props => {
   const smoothScrollToProductsHandler = e => {
@@ -31,4 +31,4 @@ const WelcomeSection = props => {
   );
 };
 
-export default WelcomeSection;
+export default React.memo(WelcomeSection);
