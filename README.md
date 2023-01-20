@@ -1,4 +1,4 @@
-# hello! smoothie
+# hello! smoothie 🥕
 
 It is my next React project. It is an application that, despite its small size, is relatively complex:
 
@@ -11,6 +11,8 @@ It is my next React project. It is an application that, despite its small size, 
 - managing checkout form validation & handling possible errors;
 - basic performance optimization (memoization).
 
-🥕🥦 [hello! smoothie - LIVE](https://hello-smoothie.netlify.app/)
+I designed the app in natural Earthy colors, in an old-school style.
+
+🥦🥒🍆🍅 [hello! smoothie - LIVE](https://hello-smoothie.netlify.app/)
 
 <p align="center"><img src="/src/assets/img/hello smoothie ui.jpg"></p>
