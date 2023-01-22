@@ -7,7 +7,7 @@ It is my next React project. It is an application that, despite its small size, 
 - sending `get` and `post` requests to Firebase API (handling possible errors);
 - Framer-motion library used to create a draggy products carousel;
 - building & using a custom `ContextProvider` components;
-- cart logic encapsulation, managing cart state with `useReducer`'s function and providing `value` to children components via`Context.Provider`;
+- creating central place for cart state & logic, managing cart state with `useReducer`'s function and providing `value` to children components via`Context.Provider`;
 - managing checkout form validation & handling possible errors;
 - basic performance optimization (memoization).
 
